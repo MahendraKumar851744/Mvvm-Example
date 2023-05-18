@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.androidai.testapplication.R
+import dagger.hilt.android.AndroidEntryPoint
+
 
 class TodoFragment:Fragment(R.layout.todo_fragment) {
 

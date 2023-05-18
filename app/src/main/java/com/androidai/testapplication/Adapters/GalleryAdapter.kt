@@ -1,5 +1,6 @@
 package com.androidai.testapplication.Adapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,15 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.androidai.testapplication.Models.Product
 import com.androidai.testapplication.Models.galleryItem
 import com.androidai.testapplication.R
+import com.androidai.testapplication.ui.Fragments.ProductDetailFrament
 import com.bumptech.glide.Glide
 
 class GalleryAdapter(val fragmentManager: FragmentManager): RecyclerView.Adapter<GalleryAdapter.ProductHolder>() {
 
+    private var onItemClickListener: GalleryAdapter.OnItemClickListener? = null
 
     inner class ProductHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val iv_image: ImageView = itemView.findViewById(R.id.iv_image)
@@ -37,6 +41,7 @@ class GalleryAdapter(val fragmentManager: FragmentManager): RecyclerView.Adapter
         }
 
         holder.itemView.setOnClickListener(View.OnClickListener {
+            onItemClickListener?.onItemClick(item)
         })
 
     }
@@ -51,5 +56,14 @@ class GalleryAdapter(val fragmentManager: FragmentManager): RecyclerView.Adapter
     }
 
     val differ = AsyncListDiffer(this,differCallbac)
+
+    interface OnItemClickListener {
+        fun onItemClick(galleryItem: galleryItem)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        onItemClickListener = listener
+    }
+
 
 }

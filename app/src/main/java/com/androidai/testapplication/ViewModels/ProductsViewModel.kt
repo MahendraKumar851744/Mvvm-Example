@@ -7,9 +7,9 @@ import com.androidai.testapplication.Models.gallery
 import com.androidai.testapplication.Models.products
 import com.androidai.testapplication.repository.ProductsRepository
 import com.androiddevs.mvvmnewsapp.util.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
-
 class ProductsViewModel(
     val productsRepository: ProductsRepository
 
